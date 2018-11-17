@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+if [ ! -f ./src/bioshiny/inst/extdata/shiny/www/codemirror ]
+then
+rm -rf ./src/bioshiny/inst/extdata/shiny/www/codemirror
+wd=`pwd`
+yarn install && cd ./node_modules/codemirror/ && yarn install \
+    && cd ${wd} && cp -rf `pwd`/node_modules/codemirror `pwd`/src/bioshiny/inst/extdata/shiny/www/codemirror \
+    && R CMD INSTALL `pwd`/src/bioshiny
+fi

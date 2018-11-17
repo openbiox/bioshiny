@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://github/ngsjs/bioshiny">
     <img
-      alt="ngsjs"
+      alt="bioshiny"
       src="doc/images/bioshiny-logo.svg"
       width="400"
     />
@@ -38,3 +38,35 @@ o
 ![](https://raw.githubusercontent.com/Miachol/ftp/master/files/images/bioinstaller/overview4.jpg)
 
 ![](https://raw.githubusercontent.com/Miachol/ftp/master/files/images/bioinstaller/overview4.jpg)
+
+## Installation
+
+```bash
+git clone https::/github.com/ngsjs/bioshiny
+cd bioshiny
+yarn global add `pwd`
+rshinydeps
+jsshinydeps
+```
+
+## Usage
+
+```bash
+rstart_shiny
+```
+
+
+## How to contribute?
+
+Please fork the [GitHub bioshiny
+repository](https://github.com/ngsjs/bioshiny), modify it, and
+submit a pull request to us. 
+
+## Maintainer
+
+[Jianfeng Li](https://github.com/Miachol)
+
+## License
+
+MIT
+

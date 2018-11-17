@@ -87,3 +87,5 @@ packrat/lib*/
 src/*.Rcheck
 src/*.tar.gz
 src/ngsjs.Rcheck
+
+codemirror

@@ -1,0 +1,75 @@
+#!/usr/bin/env Rscript
+# Author: Jianfeng Li
+# Email: lee_jianfeng@sjtu.edu.cn
+# Year: 2018
+# Homepage: https://github.com/ngsjs/ngsjs
+# License: MIT
+# Copyrights 2018 Jianfeng All Rights Reserved.
+suppressMessages(if(!require('pacman')) install.packages('pacman'))
+pkgs <- c("ngstk")
+suppressMessages(pacman::p_load(pkgs, character.only = TRUE))
+
+option_list <- list(
+  make_option(c("-v", "--verbose"), action = "store_true", default = FALSE, help = "Print extra output [default FALSE]"), 
+  make_option(c("-f", "--func"), help = "Index or name of used function [e.g. shiny::runApp (1).", 
+              default = "shiny::runApp"),
+  make_option(c("-a", "--app_dir"), help = "Bioshiny application dir.", default = system.file('extdata', 'shiny', package = 'bioshiny')), 
+  make_option(c("-p", "--port"), help = "Port to start a shiny application.", default = "3333"), 
+  make_option(c("-r", "--rfunc"), help = "R function (input param 'x') to process the returned colors or length [e.g. function(x){return(x[[2]])} or x[[2]]].", 
+  default = NULL),
+  make_option(c("-e", "--extra"), help = "Extra parameters [...].", default = ""),
+  make_option(c("-d", "--doc"), action = "store_true", default = FALSE, help = "Print functions document")
+)
+
+description <- paste(
+                     "\trstart_shiny is a R-based tool to start an R bioshiny application.",
+                     sep = "\n\t"
+                    )
+usage <- paste("",
+               "%prog [options] [params]",
+               "%prog",
+               "%prog -p 3434",
+               sep = "\n\t")
+opt_parser_obj <- opt_parser(option_list = option_list,
+                        usage = usage, description = description) 
+opt <- parse_args(opt_parser_obj, positional_arguments = TRUE, print_help_and_exit = FALSE) 
+opt_args <- opt$args
+opt <- opt$option
+if (opt[["port"]] == "" && length(opt_args) > 0) opt[["port"]] <- opt_args[1]
+if (opt[["app_dir"]] == "" && length(opt_args) > 1) opt[["app_dir"]] <- opt_args[1]
+if (!is.null(opt[["rfunc"]]) && length(opt_args) > 2) opt[["rfunc"]] <- opt_args[2]
+
+if ((opt[["port"]] == "" && opt[["app_dir"]] == "" && !opt[["doc"]] ) || opt$help) {
+  print_help(opt_parser_obj)
+} else {
+  port <- as.numeric(opt[["port"]])
+  app_dir <- opt[["app_dir"]]
+  if (opt[["extra"]] != "") {
+    cmd_text <- sprintf("params <- list(appDir = app_dir, port = port, %s)", opt[["extra"]])
+  } else {
+    cmd_text <- sprintf("params <- list(appDir = app_dir, port = port)")
+  }
+  eval(parse(text = cmd_text))
+  predefined_funcs <- list("1"="shiny::runApp") 
+  if (opt[["func"]] %in% names(predefined_funcs)) {
+    predefined_func <- predefined_funcs[[ opt[["func"]] ]]
+    if (length(grep("::|:::", opt[["func"]])) > 0) {
+      dep_pkg <- strsplit(predefined_func, "::|:::")[[1]][1]
+      suppressWarnings(suppressMessages(pacman::p_load(dep_pkg, character.only = TRUE)))
+    }
+    opt[["func"]] <- predefined_func
+  }
+  if (opt[["doc"]]) {
+    eval(parse(text = sprintf("?%s", opt[["func"]])))
+  } else {
+    eval(parse(text = sprintf("x <- do.call(%s, params)", opt[["func"]])))
+    is.function <- length(grep("function", opt[["rfunc"]])) > 0
+    if (is.character(opt[["rfunc"]]) && !is.function) {
+      opt[["rfunc"]] <- sprintf("function(x) {%s}", opt[["rfunc"]])
+    }
+    if (is.character(opt[["rfunc"]]))
+      x <- do.call(eval(parse(text = opt$rfunc)), list(x=x))
+    if (is.character(x) || is.numeric(x)) cat(paste(x, collapse = "\n"), sep = "\n")
+    else x
+  }
+}

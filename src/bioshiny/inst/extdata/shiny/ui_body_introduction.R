@@ -7,7 +7,7 @@ get_introduction_tabItem_ui <- function(){
                 status = "primary",
                 collapsible = TRUE,
                 collapsed = FALSE,
-                includeMarkdown("index.md")
+                includeMarkdown("https://raw.githubusercontent.com/JhuangLab/BioInstaller/master/README.md")
               )
             )
     )
