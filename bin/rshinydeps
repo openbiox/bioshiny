@@ -1,0 +1,13 @@
+#!/usr/bin/env Rscript
+tryCatch({if (!requireNamespace("pacman")) install.packages("pacman")}, warning = function(w) {
+  if (!requireNamespace("devtools"))
+    install.packages("devtools")
+  devtools::install_url("https://cran.r-project.org/src/contrib/Archive/pacman/pacman_0.4.6.tar.gz")
+})
+
+pkgs.shiny <- c("ngsjs", "bioshiny")
+suppressMessages(devtools::install_github("ngsjs/ngsjs/src/ngsjs"))
+suppressMessages(devtools::install_github("ngsjs/bioshiny/src/bioshiny"))
+
+flog.info("All bioshiny basic dependences (R packages) were resolved.")
+flog.info(paste0(pkgs.shiny, collapse = ", "))

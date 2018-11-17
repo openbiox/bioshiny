@@ -1,0 +1,19 @@
+{
+  "name": "bioshiny",
+  "version": "0.0.1",
+  "description": "A tool kit to develop and install the Shiny applications and plugins.",
+  "main": "index.js",
+  "repository": "https://github.com/ngsjs/bioshiny",
+  "author": "Jianfeng <lee_jianfeng@sjtu.edu.cn>",
+  "scripts": {
+    "gadd": "yarn global add `pwd`"
+  },
+  "dependencies": {
+    "codemirror": "^5.41.0",
+    "ngsjs": "^0.1.6"
+  },
+  "bin": {
+    "rshinydeps": "./bin/rshinydeps"
+  },
+  "license": "MIT"
+}
