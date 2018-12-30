@@ -7,7 +7,7 @@ tryCatch({if (!requireNamespace("pacman")) install.packages("pacman")}, warning 
 
 pkgs <- c("futile.logger")
 suppressMessages(pacman::p_load(pkgs, character.only = TRUE))
-suppressMessages(devtools::install_github("ngsjs/ngsjs/src/ngsjs"))
-suppressMessages(devtools::install_github("ngsjs/bioshiny/src/bioshiny"))
+suppressMessages(devtools::install_github("ngsjs/ngsjs/src/ngsjs", upgrade = "never"))
+suppressMessages(devtools::install_github("ngsjs/bioshiny/src/bioshiny", upgrade = "never"))
 
 flog.info("All bioshiny basic dependences (R packages) were resolved.")

@@ -17,7 +17,7 @@ get_tabItems <- function () {
   eval(parse(text = cmd))
 }
 
-header <- dashboardHeader(title = "BioInstaller Shiny APP", messages, notifications,
+header <- dashboardHeader(title = "BioShiny APP", messages, notifications,
   tasks)
 
 sidebar <- dashboardSidebar(
@@ -28,11 +28,11 @@ sidebar <- dashboardSidebar(
     menuItem("Upload", tabName = "upload", icon = icon("cloud-upload")),
     menuItem("File Viewer", tabName = "file_viewer", icon = icon("file")),
     menuItem("Pipeline", tabName = "pipeline", icon = icon("diamond")),
-    menuItem("Instant", tabName = "instant", icon = icon("delicious")),
+    menuItem("Instant", tabName = "instant", icon = icon("leaf")),
     menuItem("Installer", icon = icon("cloud-download"), tabName = "download"),
     menuItem("Setting", icon = icon("gears"), tabName = "setting"),
     menuItem("Source code for app", icon = icon("file-code-o"),
-             href = "https://github.com/JhuangLab/BioInstaller/blob/master/inst/extdata/shiny/app.R")
+             href = "https://github.com/ngsjs/bioshiny/tree/master/src/bioshiny/inst/extdata/shiny")
   )
 )
 
