@@ -1,6 +1,6 @@
 {
   "name": "bioshiny",
-  "version": "0.0.3-2",
+  "version": "0.1.0",
   "description": "A tool kit to develop and install the Shiny applications and plugins.",
   "main": "index.js",
   "repository": "https://github.com/ngsjs/bioshiny",
@@ -18,9 +18,9 @@
     "codemirror": "^5.41.0"
   },
   "bin": {
-    "rshinydeps": "./bin/rshinydeps",
-    "jsshinydeps": "./bin/jsshinydeps",
-    "startbioshiny": "./bin/startbioshiny"
+    "bioshiny_deps_r": "./bin/bioshiny_deps_r",
+    "bioshiny_deps_js": "./bin/bioshiny_deps_js",
+    "bioshiny_start": "./bin/bioshiny_start"
   },
   "license": "MIT"
 }

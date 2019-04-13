@@ -1,5 +1,5 @@
 all: build 
 
 build: 
-	cp *.parameters.toml ~/.BioInstaller/plugins/ && \
-	cp shiny.config.yaml ~/.BioInstaller
+	cp *.parameters.toml ~/.bioshiny/plugins/ && \
+	cp shiny.config.yaml ~/.bioshiny

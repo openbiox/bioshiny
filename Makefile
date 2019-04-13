@@ -36,38 +36,10 @@ cleanall:
 	$(RM) -ri $(DOWNLOAD_DIR);\
 	$(RM) -ri $(DEST_DIR)
 
-show_names:
-	cd .;\
-    Rscript -e "cat(BioInstaller::install.bioinfo(show.all.names=T), sep = '\n')"
-
-show_db_names:
-	cd .;\
-    Rscript -e "cat(BioInstaller::install.bioinfo(nongithub='./inst/extdata/databases/db_main.toml', \
-	            show.all.names=T), sep = '\n')"
-
-show_meta:
-	cd .;\
-	Rscript -e "BioInstaller::get.meta()"
-
-show_versions:
-	@echo "name:$(name)"
-	cd .;\
-    Rscript -e "BioInstaller::install.bioinfo(name='$(name)',show.all.versions = TRUE)";
-
 test:
 	cd .;\
     Rscript -e "devtools::test(reporter = 'summary')"
 
-test2:
-	@echo "name:$(name), version:$(version)"
-	cd .;\
-    Rscript -e "BioInstaller::install.bioinfo(name='$(name)', download.dir=sprintf('$(DOWNLOAD_DIR)/%s/%s', basename(tempdir()), '$(name)'), dest.dir='$(DEST_DIR)', version='$(version)')";
-
-test3:
-	@echo "name:$(name), version:$(version)"
-	cd .;\
-    Rscript -e "BioInstaller::install.bioinfo(name='$(name)', download.dir=sprintf('$(DOWNLOAD_DIR)/%s/%s', basename(tempdir()), '$(name)'), dest.dir='$(DEST_DIR)', version='$(version)', nongithub.cfg = './inst/extdata/config/db/db_main.toml')";
-
 format:
 	cd .;\
-	Rscript -e "library(formatR);options('formatR.indent'=2);tidy_dir('./R');tidy_dir('./BioInstaller/inst/extdata/')"
+	Rscript -e "library(formatR);options('formatR.indent'=2);tidy_dir('src/bioshiny/R');tidy_dir('src/bioshiny/tests/testthat/')"

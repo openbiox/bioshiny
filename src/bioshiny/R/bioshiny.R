@@ -5,10 +5,13 @@
 #' @seealso
 #' Useful links:
 #'
-#' \url{https://github.com/ngsjs/bioshiny/src/bioshiny}
+#' \url{https://github.com/ngsjs/bioshiny}
 #'
 #' Report bugs at \url{https://github.com/ngsjs/bioshiny/issues}
 #'
 #' @docType package
 #' @name bioshiny
+#' @importFrom configr read.config config.list.merge
+#' @importFrom shiny runApp
+#' @importFrom stringi stri_rand_strings
 NULL

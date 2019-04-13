@@ -2,8 +2,8 @@
   <a href="https://github/ngsjs/bioshiny">
     <img
       alt="bioshiny"
-      src="doc/images/bioshiny-logo.svg"
-      width="400"
+      src="https://raw.githubusercontent.com/ngsjs/bioshiny/master/doc/images/bioshiny-logo.svg?sanitize=true"
+      width="200"
     />
   </a>
 </p>
@@ -16,15 +16,10 @@
   <a href="https://www.npmjs.com/package/bioshiny"><img src="https://img.shields.io/npm/l/bioshiny.svg" alt="License"></a>
 </p>
 
-[bioshiny](https://github.com/ngsjs/bioshiny) is a project to develop the R Shiny applications, which is the subproject of [ngsjs](https://github.com/ngsjs).
+[bioshiny](https://github.com/ngsjs/bioshiny) is a project to develop the R Shiny applications for bioinformatics research.
 
 # bioshiny
 
-This project is the next stage of [BioInstaller](https://github.com/JhuangLab/BioInstaller) Shiny applications.
-
-**Goals**
-
-- Extract Shiny application codes from [BioInstaller](https://github.com/JhuangLab/BioInstaller)
 - One-click to create bioshiny Shiny application and plugins
 - Create and share more plugins.
 - Using [npm](https://www.npmjs.com/) and GitHub to share the Shiny applications and plugins (CRAN team limited file size)
@@ -45,16 +40,16 @@ o
 git clone https::/github.com/ngsjs/bioshiny
 cd bioshiny
 yarn global add `pwd`
-rshinydeps
-jsshinydeps
+bioshiny_deps_r
+bioshiny_deps_js
 ```
 
 ## Usage
 
 ```bash
-rstart_shiny
+Rscript -e "bioshiny::set_shiny_workers(1)"
+bioshiny_start
 ```
-
 
 ## How to contribute?
 
@@ -69,4 +64,3 @@ submit a pull request to us.
 ## License
 
 MIT
-

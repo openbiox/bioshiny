@@ -8,3 +8,4 @@ _pkgdown.yml
 README.Rmd
 Makefile
 Dockerfile
+node_modules

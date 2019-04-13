@@ -1,10 +1,10 @@
 Package: bioshiny
 Type: Package
-Title: Shiny Applications Tool Kits
-Version: 0.0.1
+Title: Shiny Applications For Bioinformatics
+Version: 0.1.0
 Authors@R: person("Jianfeng", "Li", email = "lee_jianfeng@sjtu.edu.cn", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-2349-208X"))
 Description:
-   Can be used to create, downlad and start various Shiny applications.
+   Can be used to create, downlad and start various bioinformatics Shiny applications.
 Depends:
     R (>= 3.3.0)
 URL: https://github.com/ngsjs/bioshiny
@@ -13,19 +13,9 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
-    shinycssloaders,
-    Cairo,
-    shinydashboard,
-    data.table,
-    shinyjs,
-    liteq,
-    DT,
-    benchmarkme,
-    stringr,
-    R.utils,
+    configr,
     shiny,
-    RSQLite,
-    futile.logger
+    stringi
 RoxygenNote: 6.1.1
 Suggests: testthat,
     knitr,

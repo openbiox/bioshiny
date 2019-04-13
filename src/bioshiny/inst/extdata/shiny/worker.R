@@ -1,6 +1,6 @@
 shiny_config_file =
-  Sys.getenv("BIOINSTALLER_SHINY_CONFIG", system.file("extdata", "config/shiny/shiny.config.yaml",
-                                                  package = "BioInstaller"))
+  Sys.getenv("BIOSHINY_CONFIG", system.file("extdata", "config/shiny.config.yaml",
+                                                  package = "bioshiny"))
 
 config <- configr::read.config(shiny_config_file)
 db_type <- config$shiny_db$db_type
