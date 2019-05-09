@@ -3,16 +3,16 @@
   "version": "0.1.0",
   "description": "A tool kit to develop and install the Shiny applications and plugins.",
   "main": "index.js",
-  "repository": "https://github.com/ngsjs/bioshiny",
+  "repository": "https://github.com/openbiox/bioshiny",
   "author": "Jianfeng <lee_jianfeng@sjtu.edu.cn>",
   "keywords": [
-    "ngsjs",
+    "openbiox",
     "bioshiny",
     "shiny",
     "cli"
   ],
   "scripts": {
-    "gadd": "yarn global add `pwd`"
+    "gadd": "yarn global add bioshiny"
   },
   "dependencies": {
     "codemirror": "^5.41.0"
