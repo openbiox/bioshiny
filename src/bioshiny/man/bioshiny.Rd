@@ -11,7 +11,7 @@ Can be used to create, downlad and start various Shiny applications.
 \seealso{
 Useful links:
 
-\url{https://github.com/ngsjs/bioshiny/src/bioshiny}
+\url{https://github.com/ngsjs/bioshiny}
 
 Report bugs at \url{https://github.com/ngsjs/bioshiny/issues}
 }

@@ -1,10 +1,14 @@
+shiny_app_name <- "bioshiny"
+shiny_source_code <- "https://github.com/openbiox/bioshiny/tree/master/src/bioshiny/inst/extdata/shiny"
+intro_markdown <- "https://raw.githubusercontent.com/openbiox/bioshiny/master/README.md"
+
 skin <- Sys.getenv("DASHBOARD_SKIN")
 auto_create <- as.logical(Sys.getenv("AUTO_CREATE_BIOSHINY_DIR", TRUE))
 skin <- tolower(skin)
 
 # Read configuration file and set the environment vars
 config.file.template.repo <- system.file("extdata", "config/shiny.config.yaml",
-                                    package = "bioshiny")
+                                    package = shiny_app_name)
 config.file.template <- Sys.getenv("BIOSHINY_CONFIG", config.file.template.repo)
 if (!file.exists(config.file.template)) config.file.template <- config.file.template.repo
 config <- configr::read.config(config.file.template)
@@ -19,13 +23,14 @@ if (!file.exists(config.file) || !configr::is.yaml.file(config.file))
     file.copy(config.file.template, config.file)
 Sys.setenv(BIOSHINY_CONFIG = config.file)
 
-shiny_plugin_dir_repo <- system.file("extdata", "config", package = "bioshiny")
+shiny_plugin_dir_repo <- system.file("extdata", "config", package = shiny_app_name)
 shiny_plugin_dir <- shiny_plugin_dir_repo
 if (!is.null(config$shiny_plugins$shiny_plugin_dir)) {
   shiny_plugin_dir <- config$shiny_plugins$shiny_plugin_dir
 }
 if (!dir.exists(shiny_plugin_dir) || length(list.files(shiny_plugin_dir)) == 0) {
-  bioshiny::copy_plugins(shiny_plugin_dir, auto_create = auto_create)
+  cmd <- sprintf("do.call(%s::%s)", shiny_app_name, "copy_plugins(shiny_plugin_dir, auto_create = auto_create)")
+  eval(parse(text = cmd))
 }
 
 db_type <- config$shiny_db$db_type

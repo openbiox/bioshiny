@@ -1,6 +1,6 @@
 {
   "name": "bioshiny",
-  "version": "0.2.0",
+  "version": "0.2.0-1",
   "description": "A tool kit to develop and install the Shiny applications and plugins.",
   "main": "index.js",
   "repository": "https://github.com/openbiox/bioshiny",

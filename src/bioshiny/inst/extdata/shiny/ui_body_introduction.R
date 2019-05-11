@@ -7,7 +7,7 @@ get_introduction_tabItem_ui <- function(){
                 status = "primary",
                 collapsible = TRUE,
                 collapsed = FALSE,
-                includeMarkdown("https://raw.githubusercontent.com/ngsjs/bioshiny/master/README.md")
+                includeMarkdown(intro_markdown)
               )
             )
     )

@@ -88,9 +88,8 @@ copy_plugins <- function(plugin_dir = "~/.bioshiny/plugins", template_dir = syst
 #' @export
 #' @examples
 #' copy_configs(tempdir())
-copy_configs <- function(config_dir = "~/.bioshiny/", template_dir = Sys.getenv("BIOSHINY_CONFIG", 
-  system.file("extdata", "config/", package = "bioshiny")), pattern = "shiny.config.yaml", 
-  auto_create = FALSE) {
+copy_configs <- function(config_dir = "~/.bioshiny/", template_dir = system.file("extdata", 
+  "config/", package = "bioshiny"), pattern = "shiny.config.yaml", auto_create = FALSE) {
   config_dir <- normalizePath(config_dir, mustWork = FALSE)
   if (!dir.exists(config_dir) && auto_create) {
     dir.create(config_dir, recursive = TRUE)

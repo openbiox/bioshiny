@@ -5,9 +5,8 @@
 \title{Function to copy the default configuration file of bioshiny}
 \usage{
 copy_configs(config_dir = "~/.bioshiny/",
-  template_dir = Sys.getenv("BIOSHINY_CONFIG", system.file("extdata",
-  "config/", package = "bioshiny")), pattern = "shiny.config.yaml",
-  auto_create = FALSE)
+  template_dir = system.file("extdata", "config/", package = "bioshiny"),
+  pattern = "shiny.config.yaml", auto_create = FALSE)
 }
 \arguments{
 \item{config_dir}{The destdir to store plugins [~/.bioshiny]}

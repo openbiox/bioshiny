@@ -17,7 +17,7 @@ get_tabItems <- function () {
   eval(parse(text = cmd))
 }
 
-header <- dashboardHeader(title = "BioShiny APP", messages, notifications,
+header <- dashboardHeader(title = sprintf("%s APP", shiny_app_name), messages, notifications,
   tasks)
 
 sidebar <- dashboardSidebar(
@@ -32,7 +32,7 @@ sidebar <- dashboardSidebar(
     menuItem("Installer", icon = icon("cloud-download"), tabName = "download"),
     menuItem("Setting", icon = icon("gears"), tabName = "setting"),
     menuItem("Source code for app", icon = icon("file-code-o"),
-             href = "https://github.com/ngsjs/bioshiny/tree/master/src/bioshiny/inst/extdata/shiny")
+             href = shiny_source_code)
   )
 )
 
