@@ -12,11 +12,18 @@ if (in_text != "") {
   cat(in_text, file = in_file)
 }
 out_key <- qqkey
-annovarR::annotation(anno.name = "vcfanno_demo",
-input.file = in_file, buildver = in_reffa, 
-database.dir = '@>@db_dir@<@', 
-vcfanno = '@>@normalizePath(annovarR_shiny_tools_path$vcfanno, mustWork = FALSE)@<@', 
-out = sprintf("~/.annovarR/output/%s/%s.vcf", out_key, basename(in_file)))
+
+shiny_config <- Sys.getenv("BIOSHINY_CONFIG", system.file("extdata", "config/shiny.config.yaml",
+                                                  package = "bioshiny"))
+config <- configr::read.config(shiny_config)
+
+db_dir = normalizePath(config$shiny_download$download_dir, mustWork = FALSE)
+
+annovarR::annotation(anno.name = "vcfanno_demo", input.file = in_file, buildver = in_reffa, 
+                     database.dir = db_dir, 
+                     vcfanno = normalizePath(config$shiny_tools_path$vcfanno, mustWork = FALSE), 
+                     out = sprintf("%s/output/%s/%s.vcf", dirname(config$shiny_db$db_path), out_key, basename(in_file))
+                    )
 """
 progressbar_message = ""
 render_id = "vcfanno_readfiles"

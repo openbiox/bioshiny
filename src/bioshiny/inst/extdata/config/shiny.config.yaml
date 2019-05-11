@@ -20,6 +20,9 @@ shiny_db_table:
   - uid
   - username
   - password
+shiny_workers:
+  thread: 5
+  pid_pool: ~/.bioshiny/worker_pids.json
 shiny_plugins:
   shiny_plugin_dir: ~/.bioshiny/plugins
 shiny_download:
@@ -43,7 +46,12 @@ shiny_queue:
   name: bioshiny_shiny
   queue_db: ~/.bioshiny/bioshiny.shiny.queue.sqlite
 shiny_tools:
-  pipeline: easy_project
+  pipeline: 
+      - easy_project
+      - CEMiTool
+      - annovarR
+      - annovar
+      - vcfanno
   instant:
       - bioinstaller
       - spack
@@ -52,11 +60,13 @@ shiny_tools:
       - pubmed 
       - geoquery
       - maftools
+      - gvmap
+      - clusterProfiler
 shiny_tools_params:
     require:
-      bioinstaller: bioshiny
-      conda: bioshiny
-      spack: bioshiny
+      bioinstaller: BioInstaller
+      conda: BioInstaller
+      spack: BioInstaller
       datasets2tools:
           - RCurl
           - jsonlite
@@ -65,6 +75,19 @@ shiny_tools_params:
           - XML
       geoquery: GEOquery
       maftools: maftools
+      CEMiTool: CEMiTool
+      annovarR: annovarR
+      annovar: annovarR
+      vcfanno: annovarR
+      clusterProfiler: 
+          - clusterProfiler
+          - org.Hs.eg.db
+          - GSEABase
+          - cowplot
+      gvmap: gvmap
+shiny_tools_path:
+    vcfanno: ~/.bioshiny/download/tools/vcfanno/vcfanno_linux64
+    annovar: ~/.bioshiny/download/tools/annovar
 shiny_upload:
   upload_dir: ~/.bioshiny/upload
   supported_genome_version:

@@ -20,10 +20,15 @@ int_df <- read.delim(int_fname)
 gmt_fname <- system.file("extdata", "pathways.gmt", package = "CEMiTool")
 gmt_in <- read_gmt(gmt_fname)
 
-out_dir <- sprintf("~/.annovarR/output/%s", qqkey)
+shiny_config <- Sys.getenv("BIOSHINY_CONFIG", system.file("extdata", "config/shiny.config.yaml",
+                                                  package = "bioshiny"))
+config <- configr::read.config(shiny_config)
+
+out_dir <- sprintf("%s/output/%s", dirname(config$shiny_db$db_path), qqkey)
 out_dir = normalizePath(out_dir, mustWork = FALSE)
 dir.create(out_dir, recursive = TRUE)
 setwd(out_dir)
+print(out_dir)
 
 cem <- cemitool(expr0, sample_annot, gmt_in, interactions=int_df,
                 filter=TRUE, plot=TRUE, verbose=TRUE)

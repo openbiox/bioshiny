@@ -15,6 +15,7 @@ option_list <- list(
               default = "shiny::runApp"),
   make_option(c("-a", "--app_dir"), help = "Bioshiny application dir.", default = system.file('extdata', 'shiny', package = 'bioshiny')), 
   make_option(c("-p", "--port"), help = "Port to start a shiny application.", default = "3333"), 
+  make_option(c("--host"), help = "Host to listen.", default = "0.0.0.0"), 
   make_option(c("-r", "--rfunc"), help = "R function (input param 'x') to process the returned colors or length [e.g. function(x){return(x[[2]])} or x[[2]]].", 
   default = NULL),
   make_option(c("-e", "--extra"), help = "Extra parameters [...].", default = ""),
@@ -43,11 +44,12 @@ if ((opt[["port"]] == "" && opt[["app_dir"]] == "" && !opt[["doc"]] ) || opt$hel
   print_help(opt_parser_obj)
 } else {
   port <- as.numeric(opt[["port"]])
+  host <- opt[["host"]]
   app_dir <- opt[["app_dir"]]
   if (opt[["extra"]] != "") {
-    cmd_text <- sprintf("params <- list(appDir = app_dir, port = port, %s)", opt[["extra"]])
+    cmd_text <- sprintf("params <- list(appDir = app_dir, port = port, host = host, %s)", opt[["extra"]])
   } else {
-    cmd_text <- sprintf("params <- list(appDir = app_dir, port = port)")
+    cmd_text <- sprintf("params <- list(appDir = app_dir, port = port, host = host)")
   }
   eval(parse(text = cmd_text))
   predefined_funcs <- list("1"="shiny::runApp") 

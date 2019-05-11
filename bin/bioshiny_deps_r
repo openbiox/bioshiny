@@ -9,9 +9,10 @@ pkgs <- c("futile.logger")
 suppressMessages(pacman::p_load(pkgs, character.only = TRUE))
 suppressMessages(devtools::install_github("ngsjs/ngsjs/src/ngsjs", upgrade = "never"))
 suppressMessages(devtools::install_github("openbiox/bioshiny/src/bioshiny", upgrade = "never"))
+suppressMessages(devtools::install_github("Miachol/gvmap", upgrade = "never"))
 suppressMessages(devtools::install_github("jcrodriguez1989/shinyParallel", upgrade = "never"))
 
 flog.info("All bioshiny basic dependences (R packages) were resolved.")
 
-msg <- 'shinyParallel::installShinyParallel(system.file("extdata", "shiny", package = "bioshiny"), max.sessions=Inf, users.per.session=5)'
-flog.info(sprintf("Run bioshiny_deps_js and run in sudo for parallel shiny server: %s", msg))
+
+msg <- 'For parallel shiny: shinyParallel::installShinyParallel(system.file("extdata", "shiny", package = "bioshiny"), max.sessions=40, users.per.session=5)'

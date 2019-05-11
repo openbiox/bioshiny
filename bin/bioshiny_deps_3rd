@@ -1,0 +1,17 @@
+#!/usr/bin/env Rscript
+tryCatch({if (!requireNamespace("pacman")) install.packages("pacman")}, warning = function(w) {
+  if (!requireNamespace("devtools"))
+    install.packages("devtools")
+  devtools::install_url("https://cran.r-project.org/src/contrib/Archive/pacman/pacman_0.4.6.tar.gz")
+})
+
+pkgs <- c("futile.logger")
+suppressMessages(pacman::p_load(pkgs, character.only = TRUE))
+
+if (!dir.exists('~/.bioshiny/download/tools/annovar'))
+  BioInstaller::install.bioinfo('annovar', '~/.bioshiny/download/tools/annovar')
+
+if (!dir.exists('~/.bioshiny/download/tools/vcfanno'))
+  BioInstaller::install.bioinfo('vcfanno', '~/.bioshiny/download/tools/vcfanno')
+
+flog.info("All bioshiny 3rd dependences were resolved.")

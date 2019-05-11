@@ -16,8 +16,8 @@ if (!dir.exists(db_dirname) && auto_create) {
   stop("Please set the 'auto_create' in web() to TRUE, or AUTO_CREATE_BIOINSTALLER_DIR to TRUE.")
 }
 if (!file.exists(config.file) || !configr::is.yaml.file(config.file)) 
-    file.copy(config.file.template, sprintf("%s/shiny.config.yaml", db_dirname))
-Sys.setenv(BIOINSTALLER_SHINY_CONFIG = sprintf("%s/shiny.config.yaml", db_dirname))
+    file.copy(config.file.template, config.file)
+Sys.setenv(BIOSHINY_CONFIG = config.file)
 
 shiny_plugin_dir_repo <- system.file("extdata", "config", package = "bioshiny")
 shiny_plugin_dir <- shiny_plugin_dir_repo

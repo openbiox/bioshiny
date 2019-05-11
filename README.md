@@ -47,8 +47,12 @@ bioshiny_deps_js
 ## Usage
 
 ```bash
+echo 'export BIOSHINY_CONFIG="~/.bioshiny/shiny.config.yaml" >> ~/.bashrc'
+. ~/.bashrc
 Rscript -e "bioshiny::set_shiny_workers(1)"
 bioshiny_start
+
+# vcfanno and annovar plugin need to set the tools path
 ```
 
 ## How to contribute?
