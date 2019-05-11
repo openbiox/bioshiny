@@ -14,9 +14,9 @@ web <- function(appDir = system.file("extdata", "shiny", package = "bioshiny"), 
   ...) {
   params <- list(...)
   params <- config.list.merge(list(appDir), params)
-  Sys.setenv(AUTO_CREATE_BIOINSTALLER_DIR = FALSE)
+  Sys.setenv(AUTO_CREATE_BIOSHINY_DIR = FALSE)
   if (auto_create) 
-    Sys.setenv(AUTO_CREATE_BIOINSTALLER_DIR = TRUE)
+    Sys.setenv(AUTO_CREATE_BIOSHINY_DIR = TRUE)
   do.call(runApp, params)
 }
 
@@ -39,7 +39,7 @@ set_shiny_workers <- function(n, shiny_config_file = Sys.getenv("BIOSHINY_CONFIG
     if (!dir.exists(log_dir)) {
       dir.create(log_dir, recursive = TRUE)
     }
-    Sys.setenv(AUTO_CREATE_BIOINSTALLER_DIR = TRUE)
+    Sys.setenv(AUTO_CREATE_BIOSHINY_DIR = TRUE)
   }
   worker_script <- system.file("extdata", "shiny/worker.R", package = "bioshiny")
   

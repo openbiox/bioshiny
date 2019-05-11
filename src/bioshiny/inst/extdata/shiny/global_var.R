@@ -1,5 +1,5 @@
 skin <- Sys.getenv("DASHBOARD_SKIN")
-auto_create <- as.logical(Sys.getenv("AUTO_CREATE_BIOINSTALLER_DIR", TRUE))
+auto_create <- as.logical(Sys.getenv("AUTO_CREATE_BIOSHINY_DIR", TRUE))
 skin <- tolower(skin)
 
 # Read configuration file and set the environment vars
@@ -13,7 +13,7 @@ config.file <- sprintf("%s/shiny.config.yaml", db_dirname)
 if (!dir.exists(db_dirname) && auto_create) {
   dir.create(db_dirname)
 } else if (!dir.exists(db_dirname) && !auto_create){
-  stop("Please set the 'auto_create' in web() to TRUE, or AUTO_CREATE_BIOINSTALLER_DIR to TRUE.")
+  stop("Please set the 'auto_create' in web() to TRUE, or AUTO_CREATE_BIOSHINY_DIR to TRUE.")
 }
 if (!file.exists(config.file) || !configr::is.yaml.file(config.file)) 
     file.copy(config.file.template, config.file)
