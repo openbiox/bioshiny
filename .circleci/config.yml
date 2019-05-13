@@ -27,4 +27,4 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      - run: source /etc/profile && yarn global add ngsjs && yarn global add /tmp/bioshiny && bioshiny_deps_r && bioshiny_deps_js && yarn install
+      - run: source /etc/profile && yarn global add ngsjs && yarn global add /tmp/bioshiny && bioshiny_deps_r && yarn install

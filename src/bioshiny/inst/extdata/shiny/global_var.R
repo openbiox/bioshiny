@@ -19,7 +19,7 @@ if (!dir.exists(db_dirname) && auto_create) {
 } else if (!dir.exists(db_dirname) && !auto_create){
   stop("Please set the 'auto_create' in web() to TRUE, or AUTO_CREATE_BIOSHINY_DIR to TRUE.")
 }
-if (!file.exists(config.file) || !configr::is.yaml.file(config.file)) 
+if (!file.exists(config.file) || !configr::is.yaml.file(config.file))
     file.copy(config.file.template, config.file)
 Sys.setenv(BIOSHINY_CONFIG = config.file)
 
@@ -28,8 +28,10 @@ shiny_plugin_dir <- shiny_plugin_dir_repo
 if (!is.null(config$shiny_plugins$shiny_plugin_dir)) {
   shiny_plugin_dir <- config$shiny_plugins$shiny_plugin_dir
 }
+
 if (!dir.exists(shiny_plugin_dir) || length(list.files(shiny_plugin_dir)) == 0) {
-  cmd <- sprintf("do.call(%s::%s)", shiny_app_name, "copy_plugins(shiny_plugin_dir, auto_create = auto_create)")
+  params <- list(plugin_dir = shiny_plugin_dir, auto_create = auto_create)
+  cmd <- sprintf("do.call(%s::copy_plugins, params)", shiny_app_name)
   eval(parse(text = cmd))
 }
 
@@ -440,7 +442,7 @@ get_tabItem_ui <- function(tabitem = "instant") {
 
 get_bioinstaller_installed <- function() {
   items_db <- Sys.getenv('BIO_SOFTWARES_DB_ACTIVE')
-  if (!file.exists(items_db) || file.size (items_db) == 0 || 
+  if (!file.exists(items_db) || file.size (items_db) == 0 ||
       configr::get.config.type (items_db) == FALSE) return(data.frame())
   x <- configr::read.config(items_db)
   if (is.list(x)) {item_name <- names(x);x <- data.table::rbindlist(x, fill = TRUE)} else {return(data.frame())}

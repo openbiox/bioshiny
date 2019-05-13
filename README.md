@@ -39,9 +39,8 @@ o
 ```bash
 git clone https::/github.com/openbiox/bioshiny
 cd bioshiny
-yarn global add `pwd`
+yarn global bioshiny
 bioshiny_deps_r
-bioshiny_deps_js
 ```
 
 ## Usage

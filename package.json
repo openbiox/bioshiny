@@ -1,6 +1,6 @@
 {
   "name": "bioshiny",
-  "version": "0.2.0-1",
+  "version": "0.2.1",
   "description": "A tool kit to develop and install the Shiny applications and plugins.",
   "main": "index.js",
   "repository": "https://github.com/openbiox/bioshiny",
@@ -15,11 +15,9 @@
     "gadd": "yarn global add bioshiny"
   },
   "dependencies": {
-    "codemirror": "^5.41.0"
   },
   "bin": {
     "bioshiny_deps_r": "./bin/bioshiny_deps_r",
-    "bioshiny_deps_js": "./bin/bioshiny_deps_js",
     "bioshiny_deps_3rd": "./bin/bioshiny_deps_3rd",
     "bioshiny_start": "./bin/bioshiny_start"
   },
