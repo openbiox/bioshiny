@@ -37,16 +37,17 @@ o
 ## Installation
 
 ```bash
-git clone https::/github.com/openbiox/bioshiny
-cd bioshiny
-yarn global bioshiny
+yarn global add bioshiny
 bioshiny_deps_r
 ```
 
 ## Usage
 
 ```bash
+# Set bioshiny main database
 echo 'export BIOSHINY_CONFIG="~/.bioshiny/shiny.config.yaml" >> ~/.bashrc'
+# Set BioInstaller stored database
+echo 'export BIO_SOFTWARES_DB_ACTIVE="~/.bioshiny/info.yaml"'
 . ~/.bashrc
 Rscript -e "bioshiny::set_shiny_workers(1)"
 bioshiny_start
