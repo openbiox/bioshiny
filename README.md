@@ -37,6 +37,14 @@ o
 ## Installation
 
 ```bash
+wget https://raw.githubusercontent.com/openbiox/bioshiny/master/bin/bioshiny_deps_r
+wget https://raw.githubusercontent.com/openbiox/bioshiny/master/bin/bioshiny_start
+chmod a+x bioshiny_deps_r
+chmod a+x bioshiny_start
+```
+
+```bash
+# For full toolsets
 yarn global add bioshiny
 bioshiny_deps_r
 ```
